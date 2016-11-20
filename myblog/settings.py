@@ -150,3 +150,8 @@ ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('user_detail',
                                         args=[u.username])
 }
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_HOST_USER = '2354434511@qq.com'
+EMAIL_HOST_PASSWORD = 'woaini115'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

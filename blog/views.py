@@ -132,7 +132,7 @@ def detai_vote(request, id, slug):
 # 邮件分享
 def post_share(request, post_id):
     # 通过ID获取分享文章
-    post = get_object_or_404(Post, id=post_id, status='published')
+    post = get_object_or_404(Post, id=request.post.id, status='published')
     sent = False
     form = EmailPostForm(request.POST)
     if request.method == 'POST':

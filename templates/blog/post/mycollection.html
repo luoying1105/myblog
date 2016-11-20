@@ -58,12 +58,13 @@
 
     <div class="ui butt segment">
         <div class="ui basic very padded segment container info" style="width:530px;">
-            {% for post in myposts %}
+            {% for post in  posts %}
                 <div class="col-md-4 ">
-                    <img class="ui top aligned tiny image" src="{% if post.image %}{{ post.image.url }}{% endif %}"
+
+                    <img class="ui top aligned tiny image" src="{% if post.video.image %}{{ post.video.image.url }}{% endif %}"
                          style="width:80px;height:55px;">
-                    <span> <a href="{{ post.get_absolute_url }}">
-                            {{ post.title }}</a></span>
+                    <span> <a href="{{ post.video.get_absolute_url }}">
+                            {{ post.video }}</a></span>
                     <div class="ui divider"></div>
                 </div>
             {% endfor %}

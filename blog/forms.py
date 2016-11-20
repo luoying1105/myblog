@@ -1,6 +1,9 @@
 from django import forms
 from .models import Comment,Ticket
-
+"""
+git remote add origin https://github.com/luoying1105/myblog.git
+git push -u origin master
+"""
 class EmailPostForm(forms.Form):
     name = forms.CharField(max_length=25)
     email = forms.EmailField()

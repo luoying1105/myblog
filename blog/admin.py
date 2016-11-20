@@ -8,7 +8,12 @@ class PostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Post, PostAdmin)
-admin.site.register(Ticket)
+
+class TicketAdmin(admin.ModelAdmin):
+    list_display = ('voter', 'video',
+                    'choice')
+
+admin.site.register(Ticket,TicketAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']

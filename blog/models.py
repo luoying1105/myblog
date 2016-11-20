@@ -63,6 +63,7 @@ class Post(models.Model):
     description = models.TextField(blank=True)
 
 
+
     class Meta:
         ordering = ('-publish',)
 
@@ -108,6 +109,12 @@ class Comment(models.Model):
     def __str__(self):
         return 'Comment by {} on {}'.format(self.name, self.post)
 
+    # 投票管理
+class TicketManager(models.Manager):
+        def get_queryset(self):
+            return super(TicketManager, self).get_queryset().filter(choice='like')
+
+
 #投票
 class Ticket(models.Model):
     voter = models.ForeignKey(User, related_name='vote_tickets')#投票人
@@ -120,6 +127,10 @@ class Ticket(models.Model):
     choice = models.CharField(max_length=10,
                            choices=VOTE_CHOICE,
                            default='nomarl')
+    Ticket_manage = TicketManager()
 
     def __str__(self):
         return  str(self.id)
+
+    def __unicode__(self):
+        return self.voter

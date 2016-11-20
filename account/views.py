@@ -172,13 +172,15 @@ def user_detail(request, username):
 
 # 获取我所评论过的文章
 @login_required
-def Mycollection(request, category_slug=None, ):
-    my_tick = Ticket.objects.get(voter_id=request.user.id)
+def Mycollection(request):
+
     profile = Profile.objects.get(user=request.user)
-    print(my_tick.video)
-    object_list = Post.published.all()
-    posts = Post.published.filter(title=my_tick.video)
-    paginator = Paginator(posts, 3)  # 每一页显示3个
+    ticket = Ticket.Ticket_manage.filter(voter=request.user)
+    print(ticket)
+    posts = Post.published.filter()
+    print(posts)
+    #posts = Post.objects.filter(title=category.video, status='published')
+    paginator = Paginator(posts, 3)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -190,10 +192,11 @@ def Mycollection(request, category_slug=None, ):
         posts = paginator.page(paginator.num_pages)
     except:
         pass
+
     return render(request,
                   'blog/post/mycollection.html',
                   {
-                      'myposts': posts,
+                      'posts': ticket,
                       'profile': profile,
                       'page': page,
 
