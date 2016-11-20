@@ -1,6 +1,20 @@
 # myblog
 新闻类网站，包括登录验证注册，邮箱密码寻回，新闻展示，同类页面展示，文章详情，分享，评论，个人中心，个人评分记录
 
+#帐号 密码
+luoying
+woaini115
+
+#msql设置
+'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'myblog',
+        'USER': 'root',
+        'PASSWORD': 'ying1105',
+        'HOST': '',
+        'PORT': '',
+        'OPTIONS': {
+            'autocommit': True,
+        },
 
 
 #setting
