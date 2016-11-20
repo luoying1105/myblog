@@ -1,0 +1,41 @@
+#pingmu {
+    background-image: url("../themes/default/assets/images/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    top: 0px;
+}
+
+#pingmu > img {
+    width: 200px;
+    height: 200px;
+    margin-left: 80%;
+}
+
+#pingmu > h3 {
+    font-size: 30px;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    transform: translate(20%, -50%);
+}
+
+.label.label-primary > a {
+    font-size: 10px;
+    color: #ffffff;
+}
+
+#person_login {
+    width: 120px;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-image: url('../img/新闻项目切图/2-详情页/login.png')
+
+}
+
+#banner_pic {
+    width: 180px;
+    background-image: url('../img/新闻项目切图/2-详情页/icon.png');
+    background-repeat: no-repeat;
+    background-position: left
+}

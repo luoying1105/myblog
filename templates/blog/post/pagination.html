@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav>
+    <ul class="pager">
+     {% if page.has_previous %}
+        <li class="previous">
+          <a href="?page={{ page.previous_page_number }}">&larr;Previous</a>
+        </li>
+     {% endif %}
+    <li>{{ page.paginator.num_pages }}</li>
+        {% for page_number in page.paginator.page_rangge %}
+            {% ifequal page_number page.numer %}
+                <li><a href="?page={{ page_number }}" class="active item"></a></li>
+            {% else %}
+                <li><a href="?page={{ page_number }}" class="active item">page.number</a></li>
+            {% endifequal %}
+        {% endfor %}
+        <li class="next">
+            {% if page.has_next %}
+                <a href="?page={{ page.next_page_number }}">Next&rarr;</a>
+            {% endif %}
+        </li>
+    </ul>
+</nav>
+
+<div class="pagination">
+<span class="step-links">
+{% if page.has_previous %}
+    <a href="?page={{ page.previous_page_number }}">Previous</a>
+{% endif %}
+    <span class="current">
+Page {{ page.number }} of {{ page.paginator.num_pages }}.
+</span>
+    {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">Next</a>
+    {% endif %}
+</span>
+</div>
+</body>
+</html>
