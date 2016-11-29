@@ -84,7 +84,7 @@ def post_detail(request, id, slug):
     comments = post.comments.filter(active=True)
     # 投票
     try:
-        user_ticket_for_post = Ticket.objects.get(voter_id=request.user.id, video_id=post.id)
+        user_ticket_for_post = Ticket.Ticket_manage.get(voter_id=request.user.id, video_id=post.id)
         print(user_ticket_for_post.choice)
         context['user_ticket_for_post'] = user_ticket_for_post
     except:
@@ -111,6 +111,7 @@ def post_detail(request, id, slug):
 
 
 # 投票
+"""
 @login_required
 def detai_vote(request, id, slug):
     try:
@@ -127,8 +128,21 @@ def detai_vote(request, id, slug):
     except:
         pass
     return HttpResponseRedirect(reverse('blog:post_detail', args=(id, slug)))
+"""
+@login_required
+def detail_vote(request, id, slug):
+    voter_id = request.user
+    tick = Ticket.Ticket_manage.all()
+    print(tick)
 
-
+    try:
+        user_ticket_for_this_article = Ticket.Ticket_manage.get(voter=voter_id, video_id=id)
+        user_ticket_for_this_article.choice = request.POST['choice']
+        user_ticket_for_this_article.save()
+    except ObjectDoesNotExist:
+        new_ticket = Ticket(voter=voter_id, video_id=id, choice=request.POST['choice'])
+        new_ticket.save()
+    return HttpResponseRedirect(reverse('blog:post_detail', args=(id, slug)))
 # 邮件分享
 def post_share(request, post_id):
     # 通过ID获取分享文章

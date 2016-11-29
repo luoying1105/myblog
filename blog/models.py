@@ -132,5 +132,3 @@ class Ticket(models.Model):
     def __str__(self):
         return  str(self.id)
 
-    def __unicode__(self):
-        return self.voter

@@ -87,6 +87,7 @@
                 <p class="date">
                     Published {{ post.publish }} by {{ post.author }}
                 </p>
+
                 {% with total_likes=post.ticket.count users_like=post.ticket.all %}
                     <span class="count"><span
                             class="total">{{ total_likes }}</span>用户做出评价{{ total_likes|pluralize }}</span>
@@ -108,7 +109,7 @@
                        <button type="submit" class="btn btn-default" name="vote" value="normal">勉强看的过去</button>
                     {% else %}
                         <!-- Standard button -->
-                        <button type="submit" class="btn btn-default" name="vote" >还没有人评价哦</button>
+                        <button type="submit" class="btn btn-default" name="vote" >您对该文章评价为好评以下，网站拒绝显示</button>
 
                     {% endif %}
                     <!-- Button trigger modal -->
@@ -127,7 +128,7 @@
                                     <h4 class="modal-title" id="myModalLabel">请选择</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{% url "blog:vote" post.id post.slug %}" method="post">
+                                    <form action="{% url 'blog:vote' post.id post.slug%}" method="post">
                                         {% csrf_token %}
                                         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
                                         <button type="submit" class="btn btn-primary" name="choice" value="like">

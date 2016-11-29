@@ -12,12 +12,10 @@ urlpatterns = [
         name='post_list_by_tag'),
 
     # url(r'^$', views.PostListView.as_view(), name='post_list'),,
-    url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$',
+    url(r'^detail/(?P<id>\d+)/(?P<slug>[-\w]+)/$',
         views.post_detail,
         name='post_detail'),
-    url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/vote/$',
-        views.detai_vote,
-        name='vote'),
+    url(r'^detail/vote/(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.detail_vote,name="vote"),
     url(r'^(?P<post_id>\d+)/share/$', views.post_share,
         name='post_share'),
 
